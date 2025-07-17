@@ -1,0 +1,266 @@
+/* General Body Styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* Light gray background from Bootstrap */
+    color: #343a40; /* Dark text for readability */
+    min-height: 100vh; /* Memastikan body mengambil tinggi penuh viewport */
+    display: flex; /* Mengubah body menjadi flex container */
+    flex-direction: column; /* Mengatur item-item di dalam body dalam kolom (navbar, content, footer) */
+}
+
+/* Main Content Wrapper - Digunakan di layout/header.php dan view lainnya */
+.main-content-wrapper {
+    flex: 1; /* Memastikan konten mengisi ruang yang tersedia, mendorong footer ke bawah */
+    /* Padding/margin tambahan bisa ditambahkan di sini jika diperlukan */
+}
+
+/* Auth Forms (login/register) - Styling khusus untuk centering */
+/* Class ini akan diterapkan langsung pada tag <body> di login.php dan register.php */
+.auth-form-body { /* Mengganti nama class dari .auth-form-wrapper menjadi .auth-form-body */
+    display: flex; /* Mengubah body menjadi flex container */
+    justify-content: center; /* Memusatkan konten secara horizontal */
+    align-items: center; /* Memusatkan konten secara vertikal */
+    /* min-height: 100vh; dan background-color sudah ada di body umum */
+}
+
+
+/* Hero Section Styling (for home/index.php) */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 80vh; /* 80% of viewport height */
+    background: url('/images/hero_bg.jpg') no-repeat center center/cover; /* Pastikan path gambar benar */
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Dark overlay for text readability */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-size: 4.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+}
+
+.hero-content .btn {
+    padding: 15px 30px;
+    font-size: 1.25rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.hero-content .btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Section Spacing and Cards (for home/index.php) */
+.section-spacing {
+    padding: 60px 0;
+    background-color: #f8f9fa;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #343a40;
+}
+
+/* Universal Card Styling (overrides some Bootstrap defaults for consistency) */
+.card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Slightly lighter shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* More prominent hover shadow */
+}
+
+.card-body {
+    padding: 30px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #007bff; /* Primary color for card titles */
+}
+
+/* Call to Action Section (for home/index.php) */
+.cta-section {
+    background-color: #007bff; /* Primary Bootstrap color */
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.cta-section h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.cta-section p.lead {
+    font-size: 1.5rem;
+    margin-bottom: 40px;
+}
+
+.cta-section .btn {
+    padding: 15px 40px;
+    font-size: 1.25rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+}
+
+.cta-section .btn:hover {
+    background-color: white;
+    color: #007bff;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Specific Styles for Views */
+
+/* Studio Card Image */
+.studio-card-img {
+    height: 200px;
+    object-fit: cover;
+}
+
+.studio-card-img-placeholder {
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e9ecef; /* Light gray */
+}
+
+/* Studio Detail Image */
+.studio-detail-img {
+    max-height: 400px;
+    object-fit: cover;
+    width: 100%; /* Ensure it fills its column */
+}
+
+/* QR Code Image */
+.qr-code-img {
+    max-width: 250px; /* Max width for QR code display */
+    height: auto;
+    border: 1px solid #ddd;
+    padding: 5px;
+}
+
+/* Small text for form-text or similar */
+.form-text-small {
+    font-size: 0.875em; /* Default Bootstrap small size */
+    color: #6c757d; /* Muted text */
+}
+
+/* Table Badges for Status */
+.badge-status-pending {
+    background-color: #ffc107; /* warning */
+    color: #212529; /* Dark text on light background */
+}
+.badge-status-lunas {
+    background-color: #28a745; /* success */
+    color: #fff;
+}
+.badge-status-batal {
+    background-color: #dc3545; /* danger */
+    color: #fff;
+}
+.badge-status-aktif {
+    background-color: #28a745; /* success */
+    color: #fff;
+}
+.badge-status-nonaktif {
+    background-color: #6c757d; /* secondary */
+    color: #fff;
+}
+.badge-status-disetujui {
+    background-color: #28a745; /* success */
+    color: #fff;
+}
+.badge-status-ditolak {
+    background-color: #dc3545; /* danger */
+    color: #fff;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero-section {
+        height: 60vh;
+    }
+    .hero-content h1 {
+        font-size: 3rem;
+    }
+    .hero-content p {
+        font-size: 1.2rem;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+    .cta-section h2 {
+        font-size: 2.5rem;
+    }
+    .section-spacing {
+        padding: 40px 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+    }
+    .hero-content .btn {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+    .section-spacing {
+        padding: 30px 0;
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+    .cta-section h2 {
+        font-size: 2rem;
+    }
+}
