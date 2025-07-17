@@ -33,7 +33,6 @@ $routes->POST('/reviews/store', 'Review::store'); // Memproses ulasan
 
 // Rute untuk Halaman Statis (seperti About Us)
 $routes->GET('/about', 'Pages::about'); // Halaman Tentang Kami
-// $routes->GET('/contact', 'Pages::contact'); // Contoh untuk halaman kontak
 
 // Rute untuk Modul Admin (Dashboard, Pengelolaan Studio, Promo, Pengguna, dan Booking)
 // Terapkan AdminFilter di sini
@@ -45,7 +44,7 @@ $routes->group('admin', ['filter' => 'adminFilter'], function ($routes) { // Fil
     $routes->GET('studios/new', 'Admin::createStudio'); // Form tambah studio
     $routes->POST('studios/store', 'Admin::storeStudio'); // Proses simpan studio baru
     $routes->GET('studios/edit/(:num)', 'Admin::editStudio/$1'); // Form edit studio
-    $routes->POST('studios/update/(:num)', 'Admin::updateStudio/$1'); // Proses update studio (menggunakan POST dengan method spoofing PUT)
+    $routes->match(['POST', 'PUT'], 'studios/update/(:num)', 'Admin::updateStudio/$1'); // Proses update studio (menggunakan POST dengan method spoofing PUT)
     $routes->DELETE('studios/delete/(:num)', 'Admin::deleteStudio/$1'); // Proses hapus studio (menggunakan DELETE dengan method spoofing DELETE)
 
     // Rute untuk pengelolaan Promo oleh Admin
@@ -61,7 +60,7 @@ $routes->group('admin', ['filter' => 'adminFilter'], function ($routes) { // Fil
     // $routes->GET('users/new', 'Admin::createUser'); // Jika ingin admin bisa tambah user manual
     // $routes->POST('users/store', 'Admin::storeUser');
     $routes->GET('users/edit/(:num)', 'Admin::editUser/$1'); // Form edit pengguna
-    $routes->POST('users/update/(:num)', 'Admin::updateUser/$1'); // Proses update pengguna
+    $routes->match(['POST', 'PUT'], 'users/update/(:num)', 'Admin::updateUser/$1'); // <--- UBAH DI SINI
     $routes->DELETE('users/delete/(:num)', 'Admin::deleteUser/$1'); // Proses hapus pengguna
 
     // Rute untuk pengelolaan Booking oleh Admin
@@ -72,7 +71,7 @@ $routes->group('admin', ['filter' => 'adminFilter'], function ($routes) { // Fil
 
     // Rute untuk pengelolaan Ulasan oleh Admin
     $routes->GET('reviews', 'Admin::reviews'); // Daftar ulasan di admin
-    $routes->POST('reviews/moderate/(:num)', 'Admin::moderateReview/$1'); // Moderasi ulasan (POST dengan method spoofing PUT)
+    $routes->match(['POST', 'PUT'], 'reviews/moderate/(:num)', 'Admin::moderateReview/$1'); // Moderasi ulasan (POST dengan method spoofing PUT)
     // Jika ingin admin bisa hapus ulasan:
     // $routes->DELETE('reviews/delete/(:num)', 'Admin::deleteReview/$1');
 });

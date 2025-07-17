@@ -376,7 +376,7 @@ class Admin extends BaseController
     {
         $rules = [
             'nama'  => 'required|min_length[3]|max_length[100]',
-            'email' => 'required|valid_email|is_unique[users.email,id,{id}]',
+            'email' => 'required|valid_email|is_unique[users.email,id,' . $id . ']',
             'role_id' => 'required|in_list[1,2]',
         ];
 
